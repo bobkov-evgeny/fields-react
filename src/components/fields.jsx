@@ -8,7 +8,6 @@ import {
 	InputGroup,
 	FormControl,
 	Row,
-	Spinner,
 } from "react-bootstrap";
 
 const Fields = () => {
@@ -20,7 +19,10 @@ const Fields = () => {
 		setWorkers(api.fetchFieldsData()[fieldNumber - 1]);
 	};
 
-	const reset = () => setWorkers(0);
+	const reset = () => {
+		setWorkers(0);
+		setUserFormStatus(0);
+	};
 
 	const toggleUserFormActive = () => {
 		newUserForm ? setUserFormStatus(0) : setUserFormStatus(1);

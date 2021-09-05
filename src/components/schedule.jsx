@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Dropdown, ButtonGroup, Badge } from "react-bootstrap";
+import { Modal, Col, Row, Form, Button, Table } from "react-bootstrap";
 
 const Schedule = ({ worker }) => {
 	const [show, setShow] = useState(false);
@@ -11,36 +11,26 @@ const Schedule = ({ worker }) => {
 		return (
 			<>
 				{workerSchedule.map((day) => (
-					<div key={day[0]} className="scheduleInputWrapper">
-						<h3>
-							<Badge bg="primary">{day[0]}</Badge>
-						</h3>
-						<Dropdown as={ButtonGroup}>
-							<Button
-								variant="primary"
-								disabled
-								className="btn btn-primary btn-sm"
+					<tr key={day[0]}>
+						<td className="text-center align-middle">{day[0]}</td>
+						<td className="text-center align-middle">{worker.name}</td>
+						<td className="text-center align-middle">
+							<Form.Group
+								style={{ justifyContent: `center` }}
+								className="d-flex"
+								controlId="formPlaintextEmail"
 							>
-								Отработано часов:
-							</Button>
+								<Form.Control
+									size="sm"
+									style={{ width: "40px" }}
+									type="text"
+									placeholder={day[1]}
+								/>
 
-							<Dropdown.Toggle variant="primary" id="dropdown-basic">
-								{day[1]}ч.
-							</Dropdown.Toggle>
-
-							<Dropdown.Menu>
-								<Dropdown.Item>1</Dropdown.Item>
-								<Dropdown.Item href="#/action-2">2</Dropdown.Item>
-								<Dropdown.Item href="#/action-3">3</Dropdown.Item>
-								<Dropdown.Item href="#/action-4">4</Dropdown.Item>
-								<Dropdown.Item href="#/action-5">5</Dropdown.Item>
-								<Dropdown.Item href="#/action-6">6</Dropdown.Item>
-								<Dropdown.Item href="#/action-7">7</Dropdown.Item>
-								<Dropdown.Item href="#/action-8">8</Dropdown.Item>
-								<Dropdown.Item href="#/action-9">9</Dropdown.Item>
-							</Dropdown.Menu>
-						</Dropdown>
-					</div>
+								<Form.Label className="m-1">ч.</Form.Label>
+							</Form.Group>
+						</td>
+					</tr>
 				))}
 			</>
 		);
@@ -60,7 +50,18 @@ const Schedule = ({ worker }) => {
 				<Modal.Header closeButton>
 					<Modal.Title>График работы. {worker.name}</Modal.Title>
 				</Modal.Header>
-				<Modal.Body>{createScheduleMarkUp(worker.schedule)}</Modal.Body>
+				<Modal.Body>
+					<Table striped bordered hover size="sm">
+						<thead>
+							<tr align="center">
+								<th>Дата</th>
+								<th>Ф.И.О.</th>
+								<th>Смена</th>
+							</tr>
+						</thead>
+						<tbody>{createScheduleMarkUp(worker.schedule)}</tbody>
+					</Table>
+				</Modal.Body>
 				<Modal.Footer>
 					<Button variant="secondary" onClick={handleClose}>
 						Закрыть

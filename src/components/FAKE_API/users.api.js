@@ -5,7 +5,7 @@ const fields = [
 		workers: [
 			{
 				_id: "67rdca3eeb7f6fgeed471811",
-				name: "Джон Дориан",
+				name: "Джон Дориан Львович",
 				position: "Директор",
 				counter: 1,
 				schedule: [
@@ -20,8 +20,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471812",
-				name: "Боб Келсо",
-				position: "Директор",
+				name: "Боб Келсо Петрович",
+				position: "Менеджер",
 				counter: 2,
 				schedule: [
 					["22.01.2021", 8],
@@ -35,8 +35,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471813",
-				name: "Рэйчел Грин",
-				position: "Директор",
+				name: "Рэйчел Грин Иванович",
+				position: "Прораб",
 				counter: 3,
 				schedule: [
 					["22.01.2021", 8],
@@ -50,8 +50,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471814",
-				name: "Шелдон Купер",
-				position: "Директор",
+				name: "Шелдон Купер Анатольевич",
+				position: "Плотник",
 				counter: 4,
 				schedule: [
 					["22.01.2021", 8],
@@ -65,8 +65,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471815",
-				name: "Леонард Хофстедтер",
-				position: "Директор",
+				name: "Леонард Хофстедтер Сергеевич",
+				position: "Курьер",
 				counter: 5,
 				schedule: [
 					["22.01.2021", 8],
@@ -80,8 +80,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471816",
-				name: "Говард Воловиц",
-				position: "Директор",
+				name: "Говард Воловиц Артемович",
+				position: "Сборщик",
 				counter: 6,
 				schedule: [
 					["22.01.2021", 8],
@@ -101,7 +101,7 @@ const fields = [
 		workers: [
 			{
 				_id: "67rdca3eeb7f6fgeed471817",
-				name: "Никола Тесла",
+				name: "Никола Тесла Александрович",
 				position: "Директор",
 				counter: 1,
 				schedule: [
@@ -116,8 +116,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471818",
-				name: "Моника Геллер",
-				position: "Директор",
+				name: "Моника Геллер Игоревич",
+				position: "Менеджер",
 				counter: 2,
 				schedule: [
 					["22.01.2021", 8],
@@ -131,8 +131,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471819",
-				name: "Джоуи Триббиани",
-				position: "Директор",
+				name: "Джоуи Триббиани Витальевич",
+				position: "Сборщик",
 				counter: 3,
 				schedule: [
 					["22.01.2021", 8],
@@ -146,8 +146,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471810",
-				name: "Брэд Питт",
-				position: "Директор",
+				name: "Брэд Питт Михайлович",
+				position: "Носильщик",
 				counter: 4,
 				schedule: [
 					["22.01.2021", 8],
@@ -161,8 +161,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471825",
-				name: "Рассел Кроу",
-				position: "Директор",
+				name: "Рассел Кроу Андреевич",
+				position: "Уборщик",
 				counter: 5,
 				schedule: [
 					["22.01.2021", 8],
@@ -182,7 +182,7 @@ const fields = [
 		workers: [
 			{
 				_id: "67rdca3eeb7f6fgeed471835",
-				name: "Гай Ричи",
+				name: "Гай Ричи Семенович",
 				position: "Директор",
 				counter: 1,
 				schedule: [
@@ -197,8 +197,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471845",
-				name: "Райан Рейнольдс",
-				position: "Директор",
+				name: "Райан Рейнольдс Алексеевич",
+				position: "Повар",
 				counter: 2,
 				schedule: [
 					["22.01.2021", 8],
@@ -212,8 +212,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471855",
-				name: "Владимир Путин",
-				position: "Директор",
+				name: "Владимир Путин Маркович",
+				position: "Сборщик",
 				counter: 3,
 				schedule: [
 					["22.01.2021", 8],
@@ -227,8 +227,8 @@ const fields = [
 			},
 			{
 				_id: "67rdca3eeb7f6fgeed471865",
-				name: "Джо Байден",
-				position: "Директор",
+				name: "Джо Байден Трампович",
+				position: "Курьер",
 				counter: 4,
 				schedule: [
 					["22.01.2021", 8],
