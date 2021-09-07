@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Col, Row, Form, Button, Table } from "react-bootstrap";
+import { Modal, Form, Button, Table } from "react-bootstrap";
 
 const Schedule = ({ worker }) => {
 	const [show, setShow] = useState(false);
@@ -18,13 +18,14 @@ const Schedule = ({ worker }) => {
 							<Form.Group
 								style={{ justifyContent: `center` }}
 								className="d-flex"
-								controlId="formPlaintextEmail"
+								//controlId="formPlaintextEmail"
 							>
 								<Form.Control
 									size="sm"
 									style={{ width: "40px" }}
 									type="text"
 									placeholder={day[1]}
+									key={day[0]}
 								/>
 
 								<Form.Label className="m-1">ч.</Form.Label>

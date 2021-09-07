@@ -2,6 +2,7 @@ const fields = [
 	{
 		fieldNumber: 1,
 		fieldAdress: "Поле #1",
+		isActive: false,
 		workers: [
 			{
 				_id: "67rdca3eeb7f6fgeed471811",
@@ -98,6 +99,7 @@ const fields = [
 	{
 		fieldNumber: 2,
 		fieldAdress: "Поле #2",
+		isActive: false,
 		workers: [
 			{
 				_id: "67rdca3eeb7f6fgeed471817",
@@ -179,6 +181,7 @@ const fields = [
 	{
 		fieldNumber: 3,
 		fieldAdress: "Поле #3",
+		isActive: false,
 		workers: [
 			{
 				_id: "67rdca3eeb7f6fgeed471835",

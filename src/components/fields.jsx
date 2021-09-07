@@ -1,69 +1,66 @@
 import React, { useState } from "react";
 import Workers from "./worker";
+import NewUserForm from "./newUserForm";
 import * as api from "./FAKE_API/users.api";
-import {
-	Form,
-	Button,
-	Col,
-	InputGroup,
-	FormControl,
-	Row,
-} from "react-bootstrap";
 
 const Fields = () => {
-	const [selectedFieldData, setWorkers] = useState(0);
 	const [fields, setFields] = useState(api.fetchFieldsData());
+	const [selectedFieldData, setWorkers] = useState(0);
 	const [newUserForm, setUserFormStatus] = useState(0);
 
 	const setSelectedField = (fieldNumber) => {
-		setWorkers(api.fetchFieldsData()[fieldNumber - 1]);
+		fields.forEach((field) =>
+			field.fieldNumber === fieldNumber
+				? (field.isActive = true)
+				: (field.isActive = false)
+		);
+		setWorkers(fields[fieldNumber - 1]);
 	};
-
 	const reset = () => {
+		setFields(api.fetchFieldsData());
+		console.log("ok");
+		fields.forEach((field) => (field.isActive = false));
 		setWorkers(0);
 		setUserFormStatus(0);
+	};
+
+	const addUser = (event) => {
+		const selectedField = event.target[2].value;
+		event.preventDefault();
+
+		const newFieldsData = fields.map((field) => {
+			if (field.fieldNumber !== +selectedField) return field;
+			field.workers = [
+				...field.workers,
+				{
+					name: event.target[0].value,
+					position: event.target[1].value,
+					schedule: [["22.01.2021", 8]],
+					counter: field.workers.length + 1,
+					_id: field.workers.length + 1,
+				},
+			];
+			return field;
+		});
+
+		setFields(newFieldsData);
+		setUserFormStatus(0);
+	};
+
+	const deleteUser = (worker) => {
+		const newFieldsData = fields.map((field) => {
+			if (!field.workers.includes(worker)) return field;
+			field.workers = field.workers.filter((workerIn) => workerIn !== worker);
+
+			return field;
+		});
+
+		setFields(newFieldsData);
 	};
 
 	const toggleUserFormActive = () => {
 		newUserForm ? setUserFormStatus(0) : setUserFormStatus(1);
 	};
-
-	const renderNewUserForm = () => (
-		<Form className="mt-3 " onSubmit={() => toggleUserFormActive()}>
-			<Row className="align-items-center">
-				<Col xs="auto">
-					<Form.Label htmlFor="inlineFormInput" visuallyHidden>
-						Name
-					</Form.Label>
-					<Form.Control
-						className="mb-2"
-						id="inlineFormInput"
-						placeholder="Ф.И.О Пользователя"
-					/>
-				</Col>
-				<Col xs="auto">
-					<Form.Label htmlFor="inlineFormInputGroup" visuallyHidden>
-						Position
-					</Form.Label>
-					<InputGroup className="mb-2">
-						<FormControl id="inlineFormInputGroup" placeholder="Должность" />
-					</InputGroup>
-				</Col>
-				<Col xs="auto">
-					<Form.Select className="mb-2">
-						<option>Поле #1</option>
-						<option>Поле #2</option>
-						<option>Поле #3</option>
-					</Form.Select>
-				</Col>
-				<Col xs="auto">
-					<Button type="submit" className="mb-2">
-						Подтвердить
-					</Button>
-				</Col>
-			</Row>
-		</Form>
-	);
 
 	return (
 		<>
@@ -73,13 +70,16 @@ const Fields = () => {
 						key={field.fieldNumber}
 						onClick={() => setSelectedField(field.fieldNumber)}
 						type="button"
-						className="btn btn-primary btn-lg m-1 mt-4"
+						className={
+							"btn btn-lg m-1 mt-4 " +
+							(field.isActive ? "btn-success" : "btn-primary")
+						}
 					>
 						{field.fieldAdress}
 					</button>
 				))}
 				<button
-					onClick={reset}
+					onClick={() => reset()}
 					type="button"
 					className="btn btn-danger btn-lg m-1 mt-4"
 				>
@@ -96,6 +96,7 @@ const Fields = () => {
 								<th scope="col">Ф.И.О.</th>
 								<th scope="col">Должность</th>
 								<th scope="col">График</th>
+								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -104,18 +105,18 @@ const Fields = () => {
 									key={worker._id}
 									worker={worker}
 									counter={worker.counter}
+									onDelete={deleteUser}
 								/>
 							))}
 						</tbody>
 					</table>
-					<button
-						onClick={() => toggleUserFormActive()}
-						type="button"
-						className="btn btn-success btn-m"
-					>
-						Добавить пользователя
-					</button>
-					{newUserForm ? renderNewUserForm() : ""}
+
+					<NewUserForm
+						onClick={toggleUserFormActive}
+						isActive={newUserForm}
+						onSubmit={addUser}
+						selectedField={selectedFieldData.fieldNumber}
+					/>
 				</div>
 			) : (
 				""
