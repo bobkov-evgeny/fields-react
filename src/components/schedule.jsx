@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import { Modal, Form, Button, Table } from "react-bootstrap";
+import { Modal, Form, Button, Table, Spinner } from "react-bootstrap";
 
 const Schedule = ({ worker }) => {
 	const [show, setShow] = useState(false);
+	const [loaderStatus, setLoaderStatus] = useState(false);
 
 	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	const handleShow = () => {
+		console.log("yes");
+		setLoaderStatus(true);
+		setTimeout(() => {
+			setShow(true);
+			setLoaderStatus(false);
+		}, 700);
+	};
 
 	const createScheduleMarkUp = (workerSchedule) => {
 		return (
@@ -41,10 +49,20 @@ const Schedule = ({ worker }) => {
 		<>
 			<Button
 				variant="primary"
-				onClick={handleShow}
-				className="btn btn-primary btn-sm"
+				onClick={() => handleShow()}
+				className={"btn btn-secondary btn-sm schedule-buton"}
 			>
-				Открыть График
+				{loaderStatus ? (
+					<Spinner
+						as="span"
+						animation="border"
+						size="sm"
+						role="status"
+						aria-hidden="true"
+					/>
+				) : (
+					"Открыть"
+				)}
 			</Button>
 
 			<Modal show={show} onHide={handleClose}>

@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Workers from "./worker";
 import NewUserForm from "./newUserForm";
 import * as api from "./FAKE_API/users.api";
+import { Spinner } from "react-bootstrap";
 
-const Fields = () => {
+const Fields = ({ onExit }) => {
 	const [fields, setFields] = useState(api.fetchFieldsData());
 	const [selectedFieldData, setWorkers] = useState(0);
 	const [newUserForm, setUserFormStatus] = useState(0);
+	const [workerLoaderStatus, setWorkerLoaderStatus] = useState(false);
 
 	const setSelectedField = (fieldNumber) => {
 		fields.forEach((field) =>
@@ -18,7 +20,6 @@ const Fields = () => {
 	};
 	const reset = () => {
 		setFields(api.fetchFieldsData());
-		console.log("ok");
 		fields.forEach((field) => (field.isActive = false));
 		setWorkers(0);
 		setUserFormStatus(0);
@@ -64,33 +65,61 @@ const Fields = () => {
 
 	return (
 		<>
-			<div className="nav justify-content-center">
-				{fields.map((field) => (
+			<div className="fields-wrapper">
+				<div className="nav justify-content-center">
+					{fields.map((field) => (
+						<button
+							key={field.fieldNumber}
+							onClick={() => {
+								setWorkerLoaderStatus(true);
+								setSelectedField(field.fieldNumber);
+								setTimeout(() => setWorkerLoaderStatus(false), 500);
+							}}
+							type="button"
+							className={
+								"btn btn-lg m-3 " +
+								(field.isActive ? "btn-primary" : "btn-secondary")
+							}
+						>
+							{field.fieldAdress}
+						</button>
+					))}
 					<button
-						key={field.fieldNumber}
-						onClick={() => setSelectedField(field.fieldNumber)}
+						onClick={() => reset()}
 						type="button"
-						className={
-							"btn btn-lg m-1 mt-4 " +
-							(field.isActive ? "btn-success" : "btn-primary")
-						}
+						className="btn btn-warning btn-lg m-3"
 					>
-						{field.fieldAdress}
+						Сброс
 					</button>
-				))}
-				<button
-					onClick={() => reset()}
-					type="button"
-					className="btn btn-danger btn-lg m-1 mt-4"
-				>
-					Сброс
-				</button>
+					<button
+						onClick={() => {
+							onExit(false);
+							reset();
+						}}
+						type="button"
+						className="btn btn-danger btn-lg m-3"
+					>
+						Выйти
+					</button>
+				</div>
 			</div>
-
+			{workerLoaderStatus ? (
+				<div className="spinnerWorker">
+					<Spinner animation="border" role="status">
+						<span className="visually-hidden">Loading...</span>
+					</Spinner>
+				</div>
+			) : (
+				""
+			)}
 			{selectedFieldData ? (
-				<div className="table_wrapper">
-					<table className="table table-striped table-hover">
-						<thead className="table-primary">
+				<div
+					className={
+						workerLoaderStatus ? "table_wrapper-loader" : "table_wrapper mt-4"
+					}
+				>
+					<table className="table table-hover">
+						<thead className="table">
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Ф.И.О.</th>
