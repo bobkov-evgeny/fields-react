@@ -66,7 +66,7 @@ const Fields = ({ onExit }) => {
 	return (
 		<>
 			<div className="fields-wrapper">
-				<div className="nav justify-content-center">
+				<div className="nav justify-content-center ">
 					{fields.map((field) => (
 						<button
 							key={field.fieldNumber}
@@ -77,7 +77,7 @@ const Fields = ({ onExit }) => {
 							}}
 							type="button"
 							className={
-								"btn btn-lg m-3 " +
+								"btn btn-lg m-2 " +
 								(field.isActive ? "btn-primary" : "btn-secondary")
 							}
 						>
@@ -87,22 +87,25 @@ const Fields = ({ onExit }) => {
 					<button
 						onClick={() => reset()}
 						type="button"
-						className="btn btn-warning btn-lg m-3"
+						className="btn btn-warning btn-lg m-2 text-white"
 					>
 						Сброс
 					</button>
+				</div>
+				<div className="exit-btn">
 					<button
 						onClick={() => {
 							onExit(false);
 							reset();
 						}}
 						type="button"
-						className="btn btn-danger btn-lg m-3"
+						className="btn btn-danger btn-lg m-2"
 					>
 						Выйти
 					</button>
 				</div>
 			</div>
+
 			{workerLoaderStatus ? (
 				<div className="spinnerWorker">
 					<Spinner animation="border" role="status">
@@ -115,7 +118,7 @@ const Fields = ({ onExit }) => {
 			{selectedFieldData ? (
 				<div
 					className={
-						workerLoaderStatus ? "table_wrapper-loader" : "table_wrapper mt-4"
+						workerLoaderStatus ? "table_wrapper-loader" : "table_wrapper mt-3"
 					}
 				>
 					<table className="table table-hover">

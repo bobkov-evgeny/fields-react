@@ -50,7 +50,7 @@ const Schedule = ({ worker }) => {
 			<Button
 				variant="primary"
 				onClick={() => handleShow()}
-				className={"btn btn-secondary btn-sm schedule-buton"}
+				className={"btn btn-primary btn-sm schedule-buton"}
 			>
 				{loaderStatus ? (
 					<Spinner

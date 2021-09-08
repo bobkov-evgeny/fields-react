@@ -17,7 +17,7 @@ const Auth = ({ onSubmit }) => {
 					}}
 				>
 					<Form.Group className="mb-2" controlId="formBasicEmail">
-						<Form.Label>Логин или E-mail</Form.Label>
+						<Form.Label className="test">Логин или E-mail</Form.Label>
 						<Form.Control
 							type="email"
 							placeholder="Введите Ваш логин или email"
@@ -25,25 +25,29 @@ const Auth = ({ onSubmit }) => {
 					</Form.Group>
 
 					<Form.Group className="mb-3" controlId="formBasicPassword">
-						<Form.Label>Пароль</Form.Label>
+						<Form.Label className="test">Пароль</Form.Label>
 						<Form.Control type="password" placeholder="Пароль" />
 					</Form.Group>
 					<Form.Group className="mb-3" controlId="formBasicCheckbox">
 						<Form.Check type="checkbox" label="Запомнить меня" />
 					</Form.Group>
-					<Button variant="primary" type="submit">
-						{loaderStatus ? (
-							<Spinner
-								as="span"
-								animation="border"
-								size="sm"
-								role="status"
-								aria-hidden="true"
-							/>
-						) : (
-							"Вход"
-						)}
-					</Button>
+					<div className="btn-auth-wrapper">
+						<Button variant="primary" type="submit">
+							<div className="button-auth">
+								{loaderStatus ? (
+									<Spinner
+										as="span"
+										animation="border"
+										size="sm"
+										role="status"
+										aria-hidden="true"
+									/>
+								) : (
+									"Вход"
+								)}
+							</div>
+						</Button>
+					</div>
 				</Form>
 			</div>
 		</>
