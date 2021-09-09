@@ -5,9 +5,20 @@ import Auth from "./components/auth";
 
 function App() {
 	const [login, setLogin] = useState(false);
+	const [loaderStatus, setLoaderStatus] = useState(false);
 
 	return (
-		<>{login ? <Fields onExit={setLogin} /> : <Auth onSubmit={setLogin} />}</>
+		<>
+			{login ? (
+				<Fields onExit={setLogin} />
+			) : (
+				<Auth
+					loaderStatus={loaderStatus}
+					setLoaderStatus={setLoaderStatus}
+					onSubmit={setLogin}
+				/>
+			)}
+		</>
 	);
 }
 

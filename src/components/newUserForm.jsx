@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	Form,
 	Button,
@@ -6,11 +6,22 @@ import {
 	InputGroup,
 	FormControl,
 	Row,
+	Spinner,
 } from "react-bootstrap";
 
 const NewUserForm = ({ onClick, onSubmit, isActive, selectedField }) => {
+	const [loaderStatus, setLoaderStatus] = useState(false);
+
 	const renderNewUserForm = () => (
-		<Form className="mt-3" onSubmit={(event) => onSubmit(event, selectedField)}>
+		<Form
+			className="mt-3"
+			onSubmit={(event) => {
+				setLoaderStatus(true);
+
+				onSubmit(event, selectedField);
+				setTimeout(() => setLoaderStatus(false), 1000);
+			}}
+		>
 			<Row className="align-items-center">
 				<Col xs="auto">
 					<Form.Label htmlFor="inlineFormInput" visuallyHidden>
@@ -54,7 +65,17 @@ const NewUserForm = ({ onClick, onSubmit, isActive, selectedField }) => {
 				</Col>
 				<Col xs="auto">
 					<Button type="submit" className="mb-2">
-						Подтвердить
+						{loaderStatus ? (
+							<Spinner
+								as="span"
+								animation="border"
+								size="sm"
+								role="status"
+								aria-hidden="true"
+							/>
+						) : (
+							"Подтвердить"
+						)}
 					</Button>
 				</Col>
 			</Row>

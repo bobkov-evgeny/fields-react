@@ -9,6 +9,7 @@ const Fields = ({ onExit }) => {
 	const [selectedFieldData, setWorkers] = useState(0);
 	const [newUserForm, setUserFormStatus] = useState(0);
 	const [workerLoaderStatus, setWorkerLoaderStatus] = useState(false);
+	const [resetLoaderStatus, setResetLoaderStatus] = useState(false);
 
 	const setSelectedField = (fieldNumber) => {
 		fields.forEach((field) =>
@@ -44,8 +45,10 @@ const Fields = ({ onExit }) => {
 			return field;
 		});
 
-		setFields(newFieldsData);
-		setUserFormStatus(0);
+		setTimeout(() => {
+			setFields(newFieldsData);
+			setUserFormStatus(0);
+		}, 1000);
 	};
 
 	const deleteUser = (worker) => {
@@ -95,13 +98,26 @@ const Fields = ({ onExit }) => {
 				<div className="exit-btn">
 					<button
 						onClick={() => {
-							onExit(false);
-							reset();
+							setResetLoaderStatus(true);
+							setTimeout(() => {
+								onExit(false);
+								reset();
+							}, 1000);
 						}}
 						type="button"
-						className="btn btn-danger btn-lg m-2"
+						className="btn btn-danger btn-lg m-2 btn-exit"
 					>
-						Выйти
+						{resetLoaderStatus ? (
+							<Spinner
+								as="span"
+								animation="border"
+								size="sm"
+								role="status"
+								aria-hidden="true"
+							/>
+						) : (
+							"Выйти"
+						)}
 					</button>
 				</div>
 			</div>

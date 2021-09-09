@@ -7,7 +7,6 @@ const Schedule = ({ worker }) => {
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => {
-		console.log("yes");
 		setLoaderStatus(true);
 		setTimeout(() => {
 			setShow(true);

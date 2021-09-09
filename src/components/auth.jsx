@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Button, Spinner } from "react-bootstrap";
 
-const Auth = ({ onSubmit }) => {
-	const [loaderStatus, setLoaderStatus] = useState(false);
+const Auth = ({ setLoaderStatus, loaderStatus, onSubmit }) => {
 	return (
 		<>
 			<div className="auth-form">
