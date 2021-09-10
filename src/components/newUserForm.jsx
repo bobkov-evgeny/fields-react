@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import {
 	Form,
 	Button,
-	Col,
 	InputGroup,
 	FormControl,
-	Row,
 	Spinner,
 } from "react-bootstrap";
 
@@ -22,27 +20,19 @@ const NewUserForm = ({ onClick, onSubmit, isActive, selectedField }) => {
 				setTimeout(() => setLoaderStatus(false), 1000);
 			}}
 		>
-			<Row className="align-items-center">
-				<Col xs="auto">
-					<Form.Label htmlFor="inlineFormInput" visuallyHidden>
-						Name
-					</Form.Label>
+			<div className="user_form-wrapper">
+				<div className="user_form-inputs">
 					<Form.Control
-						className="mb-2"
+						className=" m-2"
 						id="inlineFormInput"
 						placeholder="Ф.И.О Пользователя"
 					/>
-				</Col>
-				<Col xs="auto">
-					<Form.Label htmlFor="inlineFormInputGroup" visuallyHidden>
-						Position
-					</Form.Label>
-					<InputGroup className="mb-2">
+
+					<InputGroup className=" m-2">
 						<FormControl id="inlineFormInputGroup" placeholder="Должность" />
 					</InputGroup>
-				</Col>
-				<Col xs="auto">
-					<Form.Select className="mb-2" id="inlineFormSelect">
+
+					<Form.Select className=" m-2" id="inlineFormSelect">
 						<option
 							value="
                         1"
@@ -62,9 +52,15 @@ const NewUserForm = ({ onClick, onSubmit, isActive, selectedField }) => {
 							Поле №3
 						</option>
 					</Form.Select>
-				</Col>
-				<Col xs="auto">
-					<Button type="submit" className="mb-2">
+				</div>
+				<div className="user_form-submit-btn">
+					<Button
+						onClick={() => onClick()}
+						className="btn-danger btn-sm m-2 user_form-btn"
+					>
+						Отменить
+					</Button>
+					<Button type="submit" className="m-2 btn-sm user_form-btn">
 						{loaderStatus ? (
 							<Spinner
 								as="span"
@@ -77,20 +73,20 @@ const NewUserForm = ({ onClick, onSubmit, isActive, selectedField }) => {
 							"Подтвердить"
 						)}
 					</Button>
-				</Col>
-			</Row>
+				</div>
+			</div>
 		</Form>
 	);
 
 	return (
 		<>
-			<button
+			<Button
 				onClick={() => onClick()}
 				type="button"
-				className="btn btn-success btn-m"
+				className="btn-m btn-success "
 			>
 				Добавить пользователя
-			</button>
+			</Button>
 			{isActive ? renderNewUserForm() : ""}
 		</>
 	);

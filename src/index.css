@@ -114,3 +114,19 @@ code {
 	display: flex;
 	justify-content: center;
 }
+
+.user_form-inputs {
+	display: flex;
+	padding-right: 30px;
+}
+
+.user_form-submit-btn {
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 30px;
+	padding-top: 10px;
+}
+
+.user_form-btn {
+	width: 100px;
+}
