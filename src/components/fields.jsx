@@ -140,11 +140,24 @@ const Fields = ({ onExit }) => {
 					<table className="table table-hover">
 						<thead className="table">
 							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Ф.И.О.</th>
-								<th scope="col">Должность</th>
-								<th scope="col">График</th>
-								<th scope="col"></th>
+								<th
+									style={{ textAlign: "center", marginRight: "10px" }}
+									scope="col"
+								>
+									#
+								</th>
+								<th style={{ textAlign: "center" }} scope="col">
+									Ф.И.О.
+								</th>
+								<th style={{ textAlign: "center" }} scope="col">
+									Должность
+								</th>
+								<th style={{ textAlign: "center" }} scope="col">
+									График
+								</th>
+								<th style={{ textAlign: "center" }} scope="col">
+									Удалить
+								</th>
 							</tr>
 						</thead>
 						<tbody>

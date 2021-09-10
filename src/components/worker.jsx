@@ -7,13 +7,15 @@ const Worker = ({ worker, onDelete }) => {
 	return (
 		<>
 			<tr>
-				<th scope="row">{worker.counter}</th>
+				<th style={{ textAlign: "center" }} scope="row">
+					{worker.counter}
+				</th>
 				<td>{worker.name}</td>
-				<td>{worker.position}</td>
-				<td>
+				<td style={{ textAlign: "center" }}>{worker.position}</td>
+				<td style={{ textAlign: "center" }}>
 					<Schedule worker={worker} />
 				</td>
-				<td>
+				<td style={{ textAlign: "center" }}>
 					<button
 						onClick={() => {
 							setLoaderStatus(true);

@@ -31,7 +31,7 @@ const Schedule = ({ worker }) => {
 									size="sm"
 									style={{ width: "40px" }}
 									type="text"
-									placeholder={day[1]}
+									value={day[1]}
 									key={day[0]}
 								/>
 
